@@ -6,6 +6,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+    bool _loading = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +34,16 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 50,
             ),
+            Center(child: _loading ? Container(
+              width: 400,
+              child: Column(
+                children: [
+                  Image.asset('assets\2.1 cat_dog_icon.png'),
+                  SizedBox(height: 50,),
+
+                ],
+              ),
+            ) : Container(),)
           ],
         ),
       ),
