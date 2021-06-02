@@ -9,11 +9,11 @@ class MySplash extends StatelessWidget {
     return SplashScreen(
       seconds: 15,
       navigateAfterSeconds: Home(),
-      title: Text('Cat or Dog ML Classifier', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Color(0X00FFFF),),),
-      image: Image.asset('assets\2.1 cat_dog_icon.png'),
+      title: Text('Cat or Dog ML Classifier', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Colors.yellowAccent,),),
+      image: Image.asset('Assets\2.1 cat_dog_icon.png'),
       backgroundColor: Colors.blueAccent,
       photoSize: 60,
-      loaderColor: Color(0X004242),
+      loaderColor: Colors.redAccent,
     );
   }
 }
