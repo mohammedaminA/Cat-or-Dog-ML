@@ -6,6 +6,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() { 
+    super.initState();
+    imageCache.clear();
+  }
     bool _loading = true;
   @override
   Widget build(BuildContext context) {
