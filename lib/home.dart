@@ -44,12 +44,46 @@ class _HomeState extends State<Home> {
                 width: 350,
                 child: Column(
                   children: [
-                    Image.asset('Assets\2.1 cat_dog_icon.png'),
+                    Image.network('https://i.ibb.co/YXqsvSQ/2-1-cat-dog-icon.png'),
                     SizedBox(height: 50,),
 
                   ],
                 ),
-              ) : Container(),)
+              ) : Container(),),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                         width: MediaQuery.of(context).size.width - 250,
+                         alignment: Alignment.center,
+                         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 18),
+                         decoration: BoxDecoration(
+                           color: Colors.yellowAccent,
+                           borderRadius: BorderRadius.circular(6.0)
+                           ),
+                           child: Text('Capture Image using Camera', style: TextStyle(color: Colors.white),),
+                           ),
+                    ),
+                    SizedBox(height: 15),
+                     GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                         width: MediaQuery.of(context).size.width - 250,
+                         alignment: Alignment.center,
+                         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 18),
+                         decoration: BoxDecoration(
+                           color: Colors.yellowAccent,
+                           borderRadius: BorderRadius.circular(6.0)
+                           ),
+                           child: Text('Pick Image from Gallery', style: TextStyle(color: Colors.white),),
+                           ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
