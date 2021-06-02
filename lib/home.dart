@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
@@ -25,7 +27,7 @@ class _HomeState extends State<Home> {
 
   detectImage(File image) async {
     var output = await Tflite.runModelOnImage(
-        path: image.relativePath,
+        path: image.path,
         numResults: 2,
         threshold: 0.6,
         imageMean: 127.5,
@@ -50,7 +52,17 @@ class _HomeState extends State<Home> {
       var image = await picker.getImage(source: ImageSource.camera);
       if (image == null) return null;
       setState(() {
-              _image = image;
+              _image = File(image.path);
+            });
+
+      detectImage(_image);
+    }
+
+     pickGalleryImage() async {
+      var image = await picker.getImage(source: ImageSource.gallery);
+      if (image == null) return null;
+      setState(() {
+              _image = File(image.path);
             });
 
       detectImage(_image);
@@ -100,14 +112,29 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                       )
-                    : Container(),
+                    : Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 250,
+                            child: Image.file(_image),
+                          ),
+                          SizedBox(height: 20,),
+                          _output != null ? Text('${_output[0]['label']}', style: TextStyle(color: Colors.white, fontSize: 15)) : Container(),
+                          SizedBox(height: 10,)
+                        ],
+                        
+                      ),
+                    ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        pickImage();
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width - 250,
                         alignment: Alignment.center,
@@ -124,7 +151,9 @@ class _HomeState extends State<Home> {
                     ),
                     SizedBox(height: 10),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        pickGalleryImage();
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width - 250,
                         alignment: Alignment.center,
