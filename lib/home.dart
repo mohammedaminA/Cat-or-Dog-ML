@@ -7,11 +7,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     imageCache.clear();
   }
-    bool _loading = true;
+
+  bool _loading = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,21 +36,29 @@ class _HomeState extends State<Home> {
               Text(
                 "Cats and Dogs ML Identifier",
                 style: TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.w500, fontSize: 30),
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 30),
               ),
               SizedBox(
                 height: 50,
               ),
-              Center(child: _loading ? Container(
-                width: 350,
-                child: Column(
-                  children: [
-                    Image.network('https://i.ibb.co/YXqsvSQ/2-1-cat-dog-icon.png'),
-                    SizedBox(height: 50,),
-
-                  ],
-                ),
-              ) : Container(),),
+              Center(
+                child: _loading
+                    ? Container(
+                        width: 350,
+                        child: Column(
+                          children: [
+                            Image.network(
+                                'https://i.ibb.co/YXqsvSQ/2-1-cat-dog-icon.png'),
+                            SizedBox(
+                              height: 50,
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(),
+              ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
@@ -57,29 +66,35 @@ class _HomeState extends State<Home> {
                     GestureDetector(
                       onTap: () {},
                       child: Container(
-                         width: MediaQuery.of(context).size.width - 250,
-                         alignment: Alignment.center,
-                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
-                         decoration: BoxDecoration(
-                           color: Colors.redAccent,
-                           borderRadius: BorderRadius.circular(6.0)
-                           ),
-                           child: Text('Capture Image using Camera', style: TextStyle(color: Colors.white),),
-                           ),
+                        width: MediaQuery.of(context).size.width - 250,
+                        alignment: Alignment.center,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 18),
+                        decoration: BoxDecoration(
+                            color: Colors.redAccent,
+                            borderRadius: BorderRadius.circular(6.0)),
+                        child: Text(
+                          'Capture Image using Camera',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                     ),
                     SizedBox(height: 10),
-                     GestureDetector(
+                    GestureDetector(
                       onTap: () {},
                       child: Container(
-                         width: MediaQuery.of(context).size.width - 250,
-                         alignment: Alignment.center,
-                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
-                         decoration: BoxDecoration(
-                           color: Colors.redAccent,
-                           borderRadius: BorderRadius.circular(6.0)
-                           ),
-                           child: Text('Pick Image from Gallery', style: TextStyle(color: Colors.white),),
-                           ),
+                        width: MediaQuery.of(context).size.width - 250,
+                        alignment: Alignment.center,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 18),
+                        decoration: BoxDecoration(
+                            color: Colors.redAccent,
+                            borderRadius: BorderRadius.circular(6.0)),
+                        child: Text(
+                          'Pick Image from Gallery',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                     ),
                   ],
                 ),
